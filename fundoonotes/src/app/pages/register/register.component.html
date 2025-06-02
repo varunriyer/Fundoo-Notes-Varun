@@ -1,1 +1,43 @@
-<p>register works!</p>
+<mat-card class="register-card">
+  <h2>Create your Google Account</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="name-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+      <mat-hint>you can use letters, numbers & periods</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+      <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Confirm</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" />
+    </mat-form-field>
+
+    <mat-checkbox (change)="togglePasswordVisibility()">Show Password</mat-checkbox>
+
+    <div class="actions">
+      <a class="signin-link" routerLink="/login">Sign in instead</a>
+      <button mat-raised-button color="primary" type="submit">Next</button>
+    </div>
+
+  </form>
+</mat-card>
