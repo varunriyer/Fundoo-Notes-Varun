@@ -10,4 +10,8 @@ export class UserService {
   login(payload: any) {
     return this.http.postApi('user/login', payload);
   }
+
+  register(payload: any) {
+    return this.http.postApi('user/userSignUp', payload);
+  }
 }
