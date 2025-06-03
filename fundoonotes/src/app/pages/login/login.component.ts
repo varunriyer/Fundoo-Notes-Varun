@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { UserService } from 'src/app/services/user/user.service';
+import { HttpService } from 'src/app/services/http_service/http.service';
 
 function emailOrPhoneValidator() {
   return (control: any) => {
@@ -33,7 +35,7 @@ function emailOrPhoneValidator() {
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -41,7 +43,7 @@ function emailOrPhoneValidator() {
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private user:UserService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, emailOrPhoneValidator()]],
       password: ['', [
@@ -58,6 +60,19 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       console.log('Login submitted:', email, password);
+      let data = {
+        email:email,
+        password:password
+      }
+      this.user.login(data).subscribe({
+        next: (result: any) => {
+          console.log(result);
+           localStorage.setItem('token', result.data.id);      
+        },
+        error:(err)=>{
+          console.log(err);
+        },
+      });
       
     } else {
       console.log('Form is invalid');
