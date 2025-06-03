@@ -130,7 +130,6 @@
   color: #5f6368;
   margin-top: 1rem;
   line-height: 1.4;
-  
 }
 
 /*  Responsive Behavior */
@@ -163,11 +162,10 @@
   }
 
   .password-fields {
-  flex-direction: column;
-}
+    flex-direction: column;
+  }
 
-.password-fields mat-form-field {
-  width: 100%;
-}
-
+  .password-fields mat-form-field {
+    width: 100%;
+  }
 }
