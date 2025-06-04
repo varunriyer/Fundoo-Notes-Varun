@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserService } from 'src/app/services/user/user.service';
 import { HttpService } from 'src/app/services/http_service/http.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 function emailOrPhoneValidator() {
   return (control: any) => {
@@ -40,6 +41,7 @@ function emailOrPhoneValidator() {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    RouterModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
