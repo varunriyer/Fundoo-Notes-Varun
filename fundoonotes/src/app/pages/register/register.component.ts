@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UserService } from 'src/app/services/user/user.service';
 import { RouterModule } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -26,6 +27,7 @@ import { RouterModule } from '@angular/router';
     MatCardModule,
     MatCheckboxModule,
     RouterModule,
+    MatSnackBarModule,
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
@@ -34,7 +36,11 @@ export class RegisterComponent {
   registerForm: FormGroup;
   hidePassword = true;
 
-  constructor(private fb: FormBuilder, private user: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private user: UserService,
+    private snackBar: MatSnackBar
+  ) {
     this.registerForm = this.fb.group(
       {
         firstName: ['', Validators.required],
@@ -92,6 +98,9 @@ export class RegisterComponent {
       this.user.register(data).subscribe({
         next: (res: any) => {
           console.log('Registered successfully', res);
+          this.snackBar.open('Signup successful!', 'Close', {
+            duration: 3000,
+          });
         },
         error: (err) => {
           console.error('Registration failed', err);
