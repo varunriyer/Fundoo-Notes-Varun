@@ -32,13 +32,20 @@ import { RouterModule } from '@angular/router';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  hidePassword = true;
 
   constructor(private fb: FormBuilder, private user: UserService) {
     this.registerForm = this.fb.group(
       {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
-        username: ['', Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/)],
+        username: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/),
+          ],
+        ],
         password: [
           '',
           [
@@ -50,15 +57,20 @@ export class RegisterComponent {
       },
       { validators: this.passwordMatchValidator }
     );
+
+    this.registerForm.get('password')?.valueChanges.subscribe(() => {
+      this.registerForm.updateValueAndValidity({ onlySelf: true });
+    });
+    this.registerForm.get('confirmPassword')?.valueChanges.subscribe(() => {
+      this.registerForm.updateValueAndValidity({ onlySelf: true });
+    });
   }
 
   passwordMatchValidator(form: FormGroup) {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
-
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
-  hidePassword = true;
 
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
