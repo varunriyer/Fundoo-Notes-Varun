@@ -14,6 +14,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { HttpService } from 'src/app/services/http_service/http.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 function emailOrPhoneValidator() {
   return (control: any) => {
@@ -42,6 +43,7 @@ function emailOrPhoneValidator() {
     MatInputModule,
     MatButtonModule,
     RouterModule,
+    MatSnackBarModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
@@ -49,7 +51,11 @@ function emailOrPhoneValidator() {
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private user: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private user: UserService,
+    private snackBar: MatSnackBar
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, emailOrPhoneValidator()]],
       password: [
@@ -57,9 +63,7 @@ export class LoginComponent {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.pattern(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/
-          ),
+          Validators.pattern(/^(?=.*\d)[A-Za-z\d]{8,}$/),
         ],
       ],
     });
@@ -77,6 +81,9 @@ export class LoginComponent {
         next: (result: any) => {
           console.log(result);
           localStorage.setItem('token', result.id);
+          this.snackBar.open('Login successful!', 'Close', {
+            duration: 3000,
+          });
         },
         error: (err) => {
           console.log(err);

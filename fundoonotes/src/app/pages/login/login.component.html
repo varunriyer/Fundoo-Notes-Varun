@@ -50,9 +50,9 @@
           >
             Password must be at least 8 characters
           </ng-container>
-          <ng-container *ngIf="loginForm.get('password')?.hasError('pattern')">
+          <!-- <ng-container *ngIf="loginForm.get('password')?.hasError('pattern')">
             Must contain uppercase, number & special character
-          </ng-container>
+          </ng-container> -->
         </mat-error>
       </mat-form-field>
       <div class="forgot-password">
@@ -61,7 +61,14 @@
 
       <div class="actions">
         <a class="link" routerLink="/register">Create account</a>
-        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
       </div>
     </form>
   </mat-card>
