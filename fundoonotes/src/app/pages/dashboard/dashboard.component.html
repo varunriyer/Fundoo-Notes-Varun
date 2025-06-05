@@ -1,6 +1,20 @@
-<app-toolbar
-  ><app-toolbar />
-  <div class="dashboard-body">
+<app-toolbar (menuClicked)="isSidenavOpen = !isSidenavOpen"></app-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    mode="side"
+    [opened]="sidenavOpened"
+    [class.mat-drawer-collapsed]="!sidenavOpened"
+    (mouseenter)="onMouseEnterSidenav()"
+    (mouseleave)="onMouseLeaveSidenav()"
+    class="custom-sidenav"
+  >
     <app-sidenav></app-sidenav>
-    <div class="main-content"></div></div
-></app-toolbar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="dashboard-content">
+      <p style="padding: 16px">Notes section</p>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

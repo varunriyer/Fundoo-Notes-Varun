@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+app-toolbar {
+  flex-shrink: 0;
+}
+
+.sidenav-container {
+  flex-grow: 1;
+  height: calc(100vh - 64px);
+}
+
+.dashboard-content {
+  background-color: #fefefe;
+  height: 100%;
+}
+
+.custom-sidenav {
+  width: 260px;
+  transition: width 0.2s ease;
+}
+
+:host-context(.mat-drawer-collapsed) .custom-sidenav {
+  width: 72px;
+}
