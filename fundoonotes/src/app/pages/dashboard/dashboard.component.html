@@ -3,8 +3,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     mode="side"
-    [opened]="sidenavOpened"
-    [class.mat-drawer-collapsed]="!sidenavOpened"
+    [opened]="true"
+    [class.mat-drawer-collapsed]="!sidenavOpened && !isHovered"
     (mouseenter)="onMouseEnterSidenav()"
     (mouseleave)="onMouseLeaveSidenav()"
     class="custom-sidenav"

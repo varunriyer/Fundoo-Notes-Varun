@@ -19,8 +19,15 @@ app-toolbar {
 }
 
 .custom-sidenav {
-  width: 260px;
+  width: 240px;
   transition: width 0.2s ease;
+  border-right: 1px solid #e0e0e0;
+  overflow: visible;
+  padding-top: 8px;
+}
+
+.mat-drawer-collapsed.custom-sidenav {
+  width: 72px;
 }
 
 :host-context(.mat-drawer-collapsed) .custom-sidenav {
