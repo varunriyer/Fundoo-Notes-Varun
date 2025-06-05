@@ -4,7 +4,8 @@
     [ngClass]="{ selected: selected === 'notes' }"
     (click)="select('notes')"
   >
-    <mat-icon>lightbulb</mat-icon>
+    <mat-icon>lightbulb_outline</mat-icon>
+
     <span>Notes</span>
   </div>
 
@@ -13,7 +14,9 @@
     [ngClass]="{ selected: selected === 'reminders' }"
     (click)="select('reminders')"
   >
-    <mat-icon>notifications</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined" fontIcon="notifications"
+      >notifications</mat-icon
+    >
     <span>Reminders</span>
   </div>
 
@@ -22,7 +25,9 @@
     [ngClass]="{ selected: selected === 'labels' }"
     (click)="select('labels')"
   >
-    <mat-icon>edit</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined" fontIcon="edit"
+      >edit</mat-icon
+    >
     <span>Edit labels</span>
   </div>
 
@@ -31,7 +36,9 @@
     [ngClass]="{ selected: selected === 'archive' }"
     (click)="select('archive')"
   >
-    <mat-icon>archive</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined" fontIcon="archive"
+      >archive</mat-icon
+    >
     <span>Archive</span>
   </div>
 
@@ -40,7 +47,9 @@
     [ngClass]="{ selected: selected === 'trash' }"
     (click)="select('trash')"
   >
-    <mat-icon>delete</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined" fontIcon="delete"
+      >delete</mat-icon
+    >
     <span>Trash</span>
   </div>
 </mat-nav-list>
