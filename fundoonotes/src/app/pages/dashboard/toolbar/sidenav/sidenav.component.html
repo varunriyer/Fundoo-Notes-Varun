@@ -1,0 +1,46 @@
+<mat-nav-list class="sidenav-list">
+  <div
+    class="nav-item"
+    [ngClass]="{ selected: selected === 'notes' }"
+    (click)="select('notes')"
+  >
+    <mat-icon>lightbulb</mat-icon>
+    <span>Notes</span>
+  </div>
+
+  <div
+    class="nav-item"
+    [ngClass]="{ selected: selected === 'reminders' }"
+    (click)="select('reminders')"
+  >
+    <mat-icon>notifications</mat-icon>
+    <span>Reminders</span>
+  </div>
+
+  <div
+    class="nav-item"
+    [ngClass]="{ selected: selected === 'labels' }"
+    (click)="select('labels')"
+  >
+    <mat-icon>edit</mat-icon>
+    <span>Edit labels</span>
+  </div>
+
+  <div
+    class="nav-item"
+    [ngClass]="{ selected: selected === 'archive' }"
+    (click)="select('archive')"
+  >
+    <mat-icon>archive</mat-icon>
+    <span>Archive</span>
+  </div>
+
+  <div
+    class="nav-item"
+    [ngClass]="{ selected: selected === 'trash' }"
+    (click)="select('trash')"
+  >
+    <mat-icon>delete</mat-icon>
+    <span>Trash</span>
+  </div>
+</mat-nav-list>
