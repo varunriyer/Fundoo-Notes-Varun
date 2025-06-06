@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidenavComponent } from './toolbar/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { NoteInputComponent } from 'src/app/components/note-input/note-input.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, ToolbarComponent, SidenavComponent, MatSidenavModule],
+  imports: [
+    CommonModule,
+    ToolbarComponent,
+    SidenavComponent,
+    MatSidenavModule,
+    NoteInputComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
