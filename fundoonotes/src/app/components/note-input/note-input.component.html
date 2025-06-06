@@ -1,0 +1,32 @@
+<!-- Collapsed view -->
+<div
+  class="note-input-collapsed"
+  *ngIf="!isExpanded"
+  (click)="expandNoteInput()"
+>
+  <span class="placeholder">Take a note...</span>
+  <div class="icons">
+    <mat-icon fontSet="material-symbols-outlined">check_box</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">brush</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">image</mat-icon>
+  </div>
+</div>
+
+<!-- Expanded view -->
+<div class="note-input-expanded" *ngIf="isExpanded">
+  <form [formGroup]="noteForm">
+    <input type="text" placeholder="Title" formControlName="title" />
+    <textarea
+      placeholder="Take a note..."
+      formControlName="description"
+    ></textarea>
+
+    <div class="expanded-icons">
+      <!-- icons will go here later -->
+      <span class="spacer"></span>
+      <button type="button" class="close-button" (click)="closeNoteInput()">
+        Close
+      </button>
+    </div>
+  </form>
+</div>
