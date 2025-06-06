@@ -8,6 +8,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { HostListener, ElementRef } from '@angular/core';
+import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-note-input',
@@ -21,7 +22,11 @@ export class NoteInputComponent {
   noteForm: FormGroup;
   justExpanded: boolean = false;
 
-  constructor(private fb: FormBuilder, private eRef: ElementRef) {
+  constructor(
+    private fb: FormBuilder,
+    private eRef: ElementRef,
+    private notesService: NotesService
+  ) {
     this.noteForm = this.fb.group({
       title: [''],
       description: [''],
@@ -38,11 +43,27 @@ export class NoteInputComponent {
   }
 
   closeNoteInput() {
-    // Optional: emit or store the note
     const note = this.noteForm.value;
-    console.log('Note submitted:', note);
 
-    this.noteForm.reset(); // Clear the form
+    // Prevent empty notes
+    if (note.title.trim() || note.description.trim()) {
+      const payload = {
+        title: note.title,
+        description: note.description,
+        isPinned: false,
+      };
+
+      this.notesService.addNote(payload).subscribe({
+        next: (res) => {
+          console.log('Note added:', res);
+        },
+        error: (err) => {
+          console.error('Error adding note:', err);
+        },
+      });
+    }
+
+    this.noteForm.reset();
     this.isExpanded = false;
   }
 
