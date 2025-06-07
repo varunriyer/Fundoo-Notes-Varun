@@ -1,6 +1,7 @@
 <app-toolbar (menuClicked)="isSidenavOpen = !isSidenavOpen"></app-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
+  <!-- Side Navigation -->
   <mat-sidenav
     mode="side"
     [opened]="true"
@@ -12,10 +13,16 @@
     <app-sidenav></app-sidenav>
   </mat-sidenav>
 
+  <!-- Main Content Area -->
   <mat-sidenav-content>
     <div class="dashboard-content">
-      <!-- Replace placeholder with note input -->
+      <!-- Take a Note input field -->
       <app-note-input></app-note-input>
+
+      <!-- Display Sample Notes (later replaced by *ngFor) -->
+      <app-note-card></app-note-card>
+      <app-note-card></app-note-card>
+      <app-note-card></app-note-card>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

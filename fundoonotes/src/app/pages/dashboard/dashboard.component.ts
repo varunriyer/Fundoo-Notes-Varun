@@ -4,6 +4,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidenavComponent } from './toolbar/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NoteInputComponent } from 'src/app/components/note-input/note-input.component';
+import { NoteCardComponent } from 'src/app/components/note-card/note-card.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +15,7 @@ import { NoteInputComponent } from 'src/app/components/note-input/note-input.com
     SidenavComponent,
     MatSidenavModule,
     NoteInputComponent,
+    NoteCardComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
