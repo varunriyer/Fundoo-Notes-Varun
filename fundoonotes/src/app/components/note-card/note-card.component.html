@@ -1,0 +1,16 @@
+<div
+  class="note-card"
+  (mouseenter)="hovered = true"
+  (mouseleave)="hovered = false"
+>
+  <div class="note-header">
+    <h3 class="note-title">Test</h3>
+    <mat-icon fontSet="material-symbols-outlined">push_pin</mat-icon>
+  </div>
+
+  <p class="note-description">This is a note</p>
+
+  <div class="note-footer" *ngIf="hovered">
+    <app-icon-list context="card"></app-icon-list>
+  </div>
+</div>
