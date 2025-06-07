@@ -5,21 +5,21 @@
   background-color: white;
   padding: 12px 16px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(60, 64, 67, 0.3); /* Increased shadow on all sides */
+  box-shadow: 0 4px 8px rgba(60, 64, 67, 0.3);
   cursor: text;
   max-width: 600px;
   width: 100%;
-  margin: 2rem auto 0 auto; /* Centered + 2rem top margin */
+  margin: 2rem auto 0 auto;
 }
 
 .note-input-expanded {
   background-color: white;
   padding: 16px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(60, 64, 67, 0.3); /* Increased shadow */
+  box-shadow: 0 4px 8px rgba(60, 64, 67, 0.3);
   max-width: 600px;
   width: 100%;
-  margin: 2rem auto 0 auto; /* Centered with 2rem top margin */
+  margin: 2rem auto 0 auto;
 }
 
 .note-input-expanded input,
@@ -34,7 +34,7 @@
 }
 
 .note-input-expanded textarea {
-  height: 60px;
+  height: 25px;
   font-size: 0.95rem;
   font-weight: 400;
 }
@@ -61,7 +61,7 @@
 
 .icons {
   display: flex;
-  gap: 34px; /* ✅ Controls spacing between icons */
+  gap: 34px;
   align-items: center;
   color: #5f6368;
 }

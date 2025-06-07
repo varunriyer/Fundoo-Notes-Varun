@@ -9,11 +9,18 @@ import {
 } from '@angular/forms';
 import { HostListener, ElementRef } from '@angular/core';
 import { NotesService } from 'src/app/services/notes/notes.service';
+import { IconListComponent } from '../icon-list/icon-list.component';
 
 @Component({
   selector: 'app-note-input',
   standalone: true,
-  imports: [CommonModule, MatIconModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IconListComponent,
+  ],
   templateUrl: './note-input.component.html',
   styleUrls: ['./note-input.component.css'],
 })
@@ -45,7 +52,6 @@ export class NoteInputComponent {
   closeNoteInput() {
     const note = this.noteForm.value;
 
-    // Prevent empty notes
     if (note.title.trim() || note.description.trim()) {
       const payload = {
         title: note.title,

@@ -1,4 +1,3 @@
-<!-- Collapsed view -->
 <div
   class="note-input-collapsed"
   *ngIf="!isExpanded"
@@ -12,18 +11,26 @@
   </div>
 </div>
 
-<!-- Expanded view -->
 <div class="note-input-expanded" *ngIf="isExpanded">
   <form [formGroup]="noteForm">
-    <input type="text" placeholder="Title" formControlName="title" />
+    <input
+      type="text"
+      placeholder="Title"
+      formControlName="title"
+      class="title-input"
+    />
+
     <textarea
       placeholder="Take a note..."
       formControlName="description"
+      class="description-input"
     ></textarea>
 
     <div class="expanded-icons">
-      <!-- icons will go here later -->
+      <app-icon-list context="input"></app-icon-list>
+
       <span class="spacer"></span>
+
       <button type="button" class="close-button" (click)="closeNoteInput()">
         Close
       </button>
