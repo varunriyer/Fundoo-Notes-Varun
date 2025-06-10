@@ -29,7 +29,13 @@ export const routes: Routes = [
             (m) => m.RemindersComponent
           ),
       },
-      // { path: 'archive', loadComponent: () => import('./components/archive/archive.component').then(m => m.ArchiveComponent) },
+      {
+        path: 'archive',
+        loadComponent: () =>
+          import('./components/archive/archive.component').then(
+            (m) => m.ArchiveComponent
+          ),
+      },
       // { path: 'trash', loadComponent: () => import('./components/trash/trash.component').then(m => m.TrashComponent) }
     ],
   },
