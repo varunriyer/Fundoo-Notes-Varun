@@ -13,5 +13,18 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuardService],
+    children: [
+      { path: '', redirectTo: 'notes', pathMatch: 'full' },
+      {
+        path: 'notes',
+        loadComponent: () =>
+          import('./components/notes/notes.component').then(
+            (m) => m.NotesComponent
+          ),
+      },
+      // { path: 'reminders', loadComponent: () => import('./components/reminders/reminders.component').then(m => m.RemindersComponent) },
+      // { path: 'archive', loadComponent: () => import('./components/archive/archive.component').then(m => m.ArchiveComponent) },
+      // { path: 'trash', loadComponent: () => import('./components/trash/trash.component').then(m => m.TrashComponent) }
+    ],
   },
 ];
