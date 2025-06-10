@@ -11,6 +11,7 @@
   gap: 12px;
   transition: box-shadow 0.2s ease;
   min-height: 120px;
+  overflow: hidden;
 }
 
 .note-card:hover {
@@ -27,6 +28,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0;
+  word-break: break-word;
 }
 
 .note-description {
@@ -34,10 +36,12 @@
   font-weight: 500;
   margin: 0;
   color: #333;
+  word-break: break-word;
 }
 
 .note-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: auto;
 }
