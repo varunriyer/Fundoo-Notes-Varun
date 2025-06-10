@@ -36,7 +36,13 @@ export const routes: Routes = [
             (m) => m.ArchiveComponent
           ),
       },
-      // { path: 'trash', loadComponent: () => import('./components/trash/trash.component').then(m => m.TrashComponent) }
+      {
+        path: 'trash',
+        loadComponent: () =>
+          import('./components/trash/trash.component').then(
+            (m) => m.TrashComponent
+          ),
+      },
     ],
   },
 ];
