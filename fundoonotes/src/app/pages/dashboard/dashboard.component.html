@@ -14,11 +14,8 @@
 
   <mat-sidenav-content>
     <div class="dashboard-content">
-      <!-- Take a Note input field -->
-      <app-note-input (noteAdded)="loadNotes()"></app-note-input>
-
-      <!-- Display real notes -->
-      <app-note-card [notes]="allNotes"></app-note-card>
+      <!-- ✅ This is where child routes render -->
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

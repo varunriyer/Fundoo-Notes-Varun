@@ -6,6 +6,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { NoteInputComponent } from 'src/app/components/note-input/note-input.component';
 import { NoteCardComponent } from 'src/app/components/note-card/note-card.component';
 import { NotesService } from 'src/app/services/notes/notes.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +18,7 @@ import { NotesService } from 'src/app/services/notes/notes.service';
     MatSidenavModule,
     NoteInputComponent,
     NoteCardComponent,
+    RouterModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
