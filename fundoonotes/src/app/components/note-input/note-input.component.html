@@ -11,7 +11,11 @@
   </div>
 </div>
 
-<div class="note-input-expanded" *ngIf="isExpanded">
+<div
+  class="note-input-expanded"
+  *ngIf="isExpanded"
+  [ngStyle]="{ 'background-color': selectedColor || '#ffffff' }"
+>
   <form [formGroup]="noteForm">
     <input
       type="text"
@@ -27,7 +31,10 @@
     ></textarea>
 
     <div class="expanded-icons">
-      <app-icon-list context="input"></app-icon-list>
+      <app-icon-list
+        context="input"
+        (colorSelected)="onColorChange($event)"
+      ></app-icon-list>
 
       <span class="spacer"></span>
 

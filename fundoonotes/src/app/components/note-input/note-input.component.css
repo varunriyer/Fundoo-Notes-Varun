@@ -13,13 +13,13 @@
 }
 
 .note-input-expanded {
-  background-color: white;
   padding: 16px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(60, 64, 67, 0.3);
   max-width: 600px;
   width: 100%;
   margin: 2rem auto 0 auto;
+  background-color: white;
 }
 
 .note-input-expanded input,
@@ -31,14 +31,15 @@
   font-size: 1.2rem;
   padding: 8px 0;
   font-weight: 600;
+  background: transparent;
 }
 
 .note-input-expanded textarea {
   height: 25px;
   font-size: 0.95rem;
   font-weight: 400;
+  background: transparent;
 }
-
 .expanded-icons {
   display: flex;
   align-items: center;
