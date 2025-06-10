@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-icon-list',
@@ -11,7 +12,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class IconListComponent {
   @Input() context: 'input' | 'card' = 'input';
+  @Input() noteID: string = '';
   @Output() colorSelected = new EventEmitter<string>();
+  @Output() archived = new EventEmitter<void>();
 
   showColorPalette = false;
 
@@ -30,6 +33,8 @@ export class IconListComponent {
     '#e8eaed',
   ];
 
+  constructor(private notesService: NotesService) {}
+
   toggleColorPalette() {
     this.showColorPalette = !this.showColorPalette;
   }
@@ -37,5 +42,24 @@ export class IconListComponent {
   selectColor(color: string) {
     this.colorSelected.emit(color);
     this.showColorPalette = false;
+  }
+
+  handleArchive() {
+    if (!this.noteID) return;
+
+    const payload = {
+      noteIdList: [this.noteID],
+      isArchived: true,
+    };
+
+    this.notesService.archiveNote(payload).subscribe({
+      next: (res: any) => {
+        console.log('Archived', res);
+        this.archived.emit();
+      },
+      error: (err) => {
+        console.error('Archive failed:', err);
+      },
+    });
   }
 }
