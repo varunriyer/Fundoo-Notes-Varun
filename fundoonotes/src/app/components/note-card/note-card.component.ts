@@ -14,4 +14,8 @@ export class NoteCardComponent {
   @Input() notes: any[] = [];
 
   hoveredIndex: number | null = null;
+
+  onNoteArchived(archivedId: string) {
+    this.notes = this.notes.filter((note) => note.id !== archivedId);
+  }
 }
