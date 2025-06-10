@@ -5,19 +5,32 @@
   color: #5f6368;
   font-size: 20px;
   padding-top: 4px;
+  position: relative;
 }
 
-mat-icon {
-  font-size: 18px;
+.palette-container {
+  position: relative;
+}
+
+.color-palette {
+  position: absolute;
+  top: 28px;
+  left: -10px;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  width: 160px;
+  z-index: 1000;
+}
+
+.color-circle {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  margin: 4px;
   cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-mat-icon:hover {
-  color: black;
-}
-
-.inactive-icon {
-  color: rgba(60, 64, 67, 0.38);
-  cursor: default;
+  border: 1px solid #ddd;
 }

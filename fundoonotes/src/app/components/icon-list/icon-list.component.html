@@ -1,6 +1,20 @@
 <div class="icon-list">
   <mat-icon fontSet="material-symbols-outlined">format_color_text</mat-icon>
-  <mat-icon fontSet="material-symbols-outlined">palette</mat-icon>
+
+  <div class="palette-container">
+    <mat-icon fontSet="material-symbols-outlined" (click)="toggleColorPalette()"
+      >palette</mat-icon
+    >
+    <div class="color-palette" *ngIf="showColorPalette">
+      <div
+        class="color-circle"
+        *ngFor="let color of lightColors"
+        [ngStyle]="{ 'background-color': color }"
+        (click)="selectColor(color)"
+      ></div>
+    </div>
+  </div>
+
   <mat-icon fontSet="material-symbols-outlined">add_alert</mat-icon>
   <mat-icon fontSet="material-symbols-outlined">person_add</mat-icon>
   <mat-icon fontSet="material-symbols-outlined">image</mat-icon>
