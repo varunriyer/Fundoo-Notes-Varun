@@ -30,7 +30,7 @@ export class NoteInputComponent {
   justExpanded: boolean = false;
   selectedColor: string = '';
 
-  @Output() noteAdded = new EventEmitter<void>(); // ✅ added
+  @Output() noteAdded = new EventEmitter<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -68,7 +68,7 @@ export class NoteInputComponent {
       this.notesService.addNote(payload).subscribe({
         next: (res) => {
           console.log('Note added:', res);
-          this.noteAdded.emit(); // ✅ Notify parent component
+          this.noteAdded.emit();
         },
         error: (err) => {
           console.error('Error adding note:', err);

@@ -26,8 +26,8 @@
 }
 
 .empty-reminder-text {
-  font-size: 1.5rem; /* ~20px */
+  font-size: 1.5rem;
   font-weight: 400;
-  color: #80868b; /* lighter gray like Google Keep */
+  color: #80868b;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
 }
