@@ -1,16 +1,18 @@
 <div
   class="note-card"
-  (mouseenter)="hovered = true"
-  (mouseleave)="hovered = false"
+  *ngFor="let note of notes; let i = index"
+  [ngStyle]="{ 'background-color': note.color || '#ffffff' }"
+  (mouseenter)="hoveredIndex = i"
+  (mouseleave)="hoveredIndex = null"
 >
   <div class="note-header">
-    <h3 class="note-title">Test</h3>
+    <h3 class="note-title">{{ note.title }}</h3>
     <mat-icon fontSet="material-symbols-outlined">push_pin</mat-icon>
   </div>
 
-  <p class="note-description">This is a note</p>
+  <p class="note-description">{{ note.description }}</p>
 
-  <div class="note-footer" *ngIf="hovered">
+  <div class="note-footer" *ngIf="hoveredIndex === i">
     <app-icon-list context="card"></app-icon-list>
   </div>
 </div>

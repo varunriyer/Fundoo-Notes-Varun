@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { IconListComponent } from '../icon-list/icon-list.component';
@@ -11,5 +11,7 @@ import { IconListComponent } from '../icon-list/icon-list.component';
   styleUrls: ['./note-card.component.css'],
 })
 export class NoteCardComponent {
-  hovered: boolean = false;
+  @Input() notes: any[] = [];
+
+  hoveredIndex: number | null = null;
 }
