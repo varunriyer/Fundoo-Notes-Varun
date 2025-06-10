@@ -1,1 +1,21 @@
-<p>trash works!</p>
+<!-- Trash subtitle: sits right under the search bar -->
+<p *ngIf="trashedNotes.length === 0" class="trash-subtitle-standalone">
+  Notes in Trash are deleted after 7 days.
+</p>
+
+<!-- Placeholder block below subtitle -->
+<div *ngIf="trashedNotes.length === 0" class="trash-container">
+  <div class="trash-placeholder">
+    <mat-icon
+      fontSet="material-symbols-outlined"
+      fontIcon="delete"
+      class="trash-icon"
+      >delete</mat-icon
+    >
+    <p class="trash-title">No notes in Trash</p>
+  </div>
+</div>
+
+<ng-container *ngIf="trashedNotes.length > 0">
+  <app-note-card [notes]="trashedNotes"></app-note-card>
+</ng-container>
