@@ -28,4 +28,10 @@ export class ArchiveComponent implements OnInit {
       error: (err) => console.error('Failed to load archived notes', err),
     });
   }
+
+  onNoteArchived(noteId: string) {
+    this.archivedNotes = this.archivedNotes.filter(
+      (note) => note.id !== noteId
+    );
+  }
 }

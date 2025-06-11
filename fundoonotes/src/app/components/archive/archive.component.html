@@ -11,5 +11,8 @@
 </div>
 
 <ng-container *ngIf="archivedNotes.length > 0">
-  <app-note-card [notes]="archivedNotes"></app-note-card>
+  <app-note-card
+    [notes]="archivedNotes"
+    [isArchiveContext]="true"
+  ></app-note-card>
 </ng-container>
