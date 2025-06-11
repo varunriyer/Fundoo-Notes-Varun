@@ -18,6 +18,7 @@
       [noteID]="note.id"
       (archived)="onNoteArchived(note.id)"
       (trashed)="onNoteTrashed(note.id)"
+      (colorChanged)="onNoteColorChanged(note.id, $event)"
     ></app-icon-list>
   </div>
 </div>

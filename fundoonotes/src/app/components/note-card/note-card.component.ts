@@ -22,4 +22,10 @@ export class NoteCardComponent {
   onNoteTrashed(trashedId: string) {
     this.notes = this.notes.filter((note) => note.id !== trashedId);
   }
+
+  onNoteColorChanged(noteId: string, newColor: string) {
+    this.notes = this.notes.map((note) =>
+      note.id === noteId ? { ...note, color: newColor } : note
+    );
+  }
 }
