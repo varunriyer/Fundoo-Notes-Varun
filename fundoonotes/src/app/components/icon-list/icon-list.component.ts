@@ -13,13 +13,15 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrls: ['./icon-list.component.css'],
 })
 export class IconListComponent {
-  @Input() context: 'input' | 'card' = 'input';
+  @Input() context: 'input' | 'card' | 'trash' = 'input';
   @Input() noteID: string = '';
   @Input() isArchivedView: boolean = false;
   @Output() colorSelected = new EventEmitter<string>();
   @Output() archived = new EventEmitter<void>();
   @Output() trashed = new EventEmitter<void>();
   @Output() colorChanged = new EventEmitter<string>();
+  @Output() restored = new EventEmitter<void>();
+  @Output() deletedForever = new EventEmitter<void>();
 
   showColorPalette = false;
 
@@ -101,6 +103,39 @@ export class IconListComponent {
       error: (err) => {
         console.error('Trash failed:', err);
       },
+    });
+  }
+
+  handleRestore() {
+    if (!this.noteID) return;
+
+    const payload = {
+      noteIdList: [this.noteID],
+      isDeleted: false,
+    };
+
+    this.notesService.trashNote(payload).subscribe({
+      next: () => {
+        console.log('Note restored');
+        this.restored.emit();
+      },
+      error: (err) => console.error('Restore failed', err),
+    });
+  }
+
+  handleDeleteForever() {
+    if (!this.noteID) return;
+
+    const payload = {
+      noteIdList: [this.noteID],
+    };
+
+    this.notesService.deleteForever(payload).subscribe({
+      next: () => {
+        console.log('Note deleted forever');
+        this.deletedForever.emit();
+      },
+      error: (err) => console.error('Delete forever failed', err),
     });
   }
 }

@@ -1,80 +1,99 @@
 <div class="icon-list">
-  <mat-icon *ngIf="context === 'input'" fontSet="material-symbols-outlined">
-    format_color_text
-  </mat-icon>
+  <!-- TRASH CONTEXT -->
+  <ng-container *ngIf="context === 'trash'">
+    <mat-icon fontSet="material-symbols-outlined" (click)="handleRestore()">
+      restore_from_trash
+    </mat-icon>
 
-  <div class="palette-container">
-    <mat-icon fontSet="material-symbols-outlined" (click)="toggleColorPalette()"
-      >palette</mat-icon
+    <mat-icon
+      fontSet="material-symbols-outlined"
+      (click)="handleDeleteForever()"
     >
-    <div class="color-palette" *ngIf="showColorPalette">
-      <div
-        class="color-circle"
-        *ngFor="let color of lightColors"
-        [ngStyle]="{ 'background-color': color }"
-        (click)="selectColor(color)"
-      ></div>
+      delete_forever
+    </mat-icon>
+  </ng-container>
+
+  <!-- INPUT CONTEXT -->
+  <ng-container *ngIf="context === 'input'">
+    <mat-icon fontSet="material-symbols-outlined">format_color_text</mat-icon>
+
+    <div class="palette-container">
+      <mat-icon
+        fontSet="material-symbols-outlined"
+        (click)="toggleColorPalette()"
+      >
+        palette
+      </mat-icon>
+      <div class="color-palette" *ngIf="showColorPalette">
+        <div
+          class="color-circle"
+          *ngFor="let color of lightColors"
+          [ngStyle]="{ 'background-color': color }"
+          (click)="selectColor(color)"
+        ></div>
+      </div>
     </div>
-  </div>
 
-  <mat-icon fontSet="material-symbols-outlined">add_alert</mat-icon>
-  <mat-icon fontSet="material-symbols-outlined">person_add</mat-icon>
-  <mat-icon fontSet="material-symbols-outlined">image</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">add_alert</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">person_add</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">image</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">archive</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined inactive-icon">undo</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined inactive-icon">redo</mat-icon>
+  </ng-container>
 
-  <mat-icon
-    fontSet="material-symbols-outlined"
-    *ngIf="context === 'card'"
-    (click)="handleArchive()"
-  >
-    archive
-  </mat-icon>
-  <mat-icon fontSet="material-symbols-outlined" *ngIf="context === 'input'">
-    archive
-  </mat-icon>
+  <!-- CARD CONTEXT -->
+  <ng-container *ngIf="context === 'card'">
+    <div class="palette-container">
+      <mat-icon
+        fontSet="material-symbols-outlined"
+        (click)="toggleColorPalette()"
+      >
+        palette
+      </mat-icon>
+      <div class="color-palette" *ngIf="showColorPalette">
+        <div
+          class="color-circle"
+          *ngFor="let color of lightColors"
+          [ngStyle]="{ 'background-color': color }"
+          (click)="selectColor(color)"
+        ></div>
+      </div>
+    </div>
 
-  <button
-    *ngIf="context === 'card'"
-    mat-icon-button
-    [matMenuTriggerFor]="moreMenu"
-    class="menu-button"
-  >
-    <mat-icon fontSet="material-symbols-outlined">more_vert</mat-icon>
-  </button>
+    <mat-icon fontSet="material-symbols-outlined">add_alert</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">person_add</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined">image</mat-icon>
+    <mat-icon fontSet="material-symbols-outlined" (click)="handleArchive()">
+      archive
+    </mat-icon>
 
-  <mat-menu #moreMenu="matMenu" class="custom-menu">
-    <button mat-menu-item (click)="handleTrash()">
-      <span>Delete note</span>
+    <button mat-icon-button [matMenuTriggerFor]="moreMenu" class="menu-button">
+      <mat-icon fontSet="material-symbols-outlined">more_vert</mat-icon>
     </button>
-    <button mat-menu-item>
-      <span>Add label</span>
-    </button>
-    <button mat-menu-item>
-      <span>Add drawing</span>
-    </button>
-    <button mat-menu-item>
-      <span>Make a copy</span>
-    </button>
-    <button mat-menu-item>
-      <span>Show checkboxes</span>
-    </button>
-    <button mat-menu-item>
-      <span>Copy to Google Docs</span>
-    </button>
-    <button mat-menu-item>
-      <span>Version history</span>
-    </button>
-  </mat-menu>
 
-  <mat-icon
-    *ngIf="context === 'input'"
-    fontSet="material-symbols-outlined inactive-icon"
-  >
-    undo
-  </mat-icon>
-  <mat-icon
-    *ngIf="context === 'input'"
-    fontSet="material-symbols-outlined inactive-icon"
-  >
-    redo
-  </mat-icon>
+    <mat-menu #moreMenu="matMenu" class="custom-menu">
+      <button mat-menu-item (click)="handleTrash()">
+        <span>Delete note</span>
+      </button>
+      <button mat-menu-item>
+        <span>Add label</span>
+      </button>
+      <button mat-menu-item>
+        <span>Add drawing</span>
+      </button>
+      <button mat-menu-item>
+        <span>Make a copy</span>
+      </button>
+      <button mat-menu-item>
+        <span>Show checkboxes</span>
+      </button>
+      <button mat-menu-item>
+        <span>Copy to Google Docs</span>
+      </button>
+      <button mat-menu-item>
+        <span>Version history</span>
+      </button>
+    </mat-menu>
+  </ng-container>
 </div>
