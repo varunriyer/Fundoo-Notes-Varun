@@ -23,7 +23,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   isSidenavOpen = false;
   isHovered = false;
   allNotes: any[] = [];
@@ -40,21 +40,5 @@ export class DashboardComponent implements OnInit {
 
   onMouseLeaveSidenav() {
     this.isHovered = false;
-  }
-
-  ngOnInit(): void {
-    this.loadNotes();
-  }
-
-  loadNotes() {
-    this.notesService.getAllNotes().subscribe({
-      next: (res: any) => {
-        // Filter out trashed or archived notes
-        this.allNotes = res.data.data.filter(
-          (note: any) => !note.isArchived && !note.isDeleted
-        );
-      },
-      error: (err) => console.error('Failed to load notes', err),
-    });
   }
 }
