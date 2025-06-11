@@ -18,6 +18,7 @@ export class IconListComponent {
   @Output() colorSelected = new EventEmitter<string>();
   @Output() archived = new EventEmitter<void>();
   @Output() trashed = new EventEmitter<void>();
+  @Output() colorChanged = new EventEmitter<string>();
 
   showColorPalette = false;
 
@@ -45,6 +46,23 @@ export class IconListComponent {
   selectColor(color: string) {
     this.colorSelected.emit(color);
     this.showColorPalette = false;
+
+    if (this.context === 'card' && this.noteID) {
+      const payload = {
+        color: color,
+        noteIdList: [this.noteID],
+      };
+
+      this.notesService.changeNoteColor(payload).subscribe({
+        next: (res: any) => {
+          console.log('Color updated successfully:', res);
+          this.colorChanged.emit(color);
+        },
+        error: (err) => {
+          console.error('Failed to update note color:', err);
+        },
+      });
+    }
   }
 
   handleArchive() {
