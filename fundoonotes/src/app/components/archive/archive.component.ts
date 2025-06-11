@@ -23,7 +23,7 @@ export class ArchiveComponent implements OnInit {
   loadArchivedNotes() {
     this.notesService.getArchivedNotes().subscribe({
       next: (res: any) => {
-        this.archivedNotes = res.data.data;
+        this.archivedNotes = res.data.data.reverse();
       },
       error: (err) => console.error('Failed to load archived notes', err),
     });
