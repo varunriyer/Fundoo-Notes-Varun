@@ -23,7 +23,7 @@ export class TrashComponent implements OnInit {
   loadTrashedNotes() {
     this.notesService.getTrashedNotes().subscribe({
       next: (res: any) => {
-        this.trashedNotes = res.data.data;
+        this.trashedNotes = res.data.data.reverse();
       },
       error: (err) => console.error('Failed to load trashed notes', err),
     });
