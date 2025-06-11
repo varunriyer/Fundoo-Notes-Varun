@@ -1,10 +1,8 @@
 <div class="icon-list">
-  <!-- Show only in 'input' -->
   <mat-icon *ngIf="context === 'input'" fontSet="material-symbols-outlined">
     format_color_text
   </mat-icon>
 
-  <!-- Palette: show in both -->
   <div class="palette-container">
     <mat-icon fontSet="material-symbols-outlined" (click)="toggleColorPalette()"
       >palette</mat-icon
@@ -19,12 +17,10 @@
     </div>
   </div>
 
-  <!-- Common icons -->
   <mat-icon fontSet="material-symbols-outlined">add_alert</mat-icon>
   <mat-icon fontSet="material-symbols-outlined">person_add</mat-icon>
   <mat-icon fontSet="material-symbols-outlined">image</mat-icon>
 
-  <!-- Archive: shown in both, but clickable only in card -->
   <mat-icon
     fontSet="material-symbols-outlined"
     *ngIf="context === 'card'"
@@ -36,7 +32,6 @@
     archive
   </mat-icon>
 
-  <!-- Menu: card only -->
   <button
     *ngIf="context === 'card'"
     mat-icon-button
@@ -70,7 +65,6 @@
     </button>
   </mat-menu>
 
-  <!-- Undo/Redo only for input -->
   <mat-icon
     *ngIf="context === 'input'"
     fontSet="material-symbols-outlined inactive-icon"
