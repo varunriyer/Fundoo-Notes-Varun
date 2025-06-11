@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 export class IconListComponent {
   @Input() context: 'input' | 'card' = 'input';
   @Input() noteID: string = '';
+  @Input() isArchivedView: boolean = false;
   @Output() colorSelected = new EventEmitter<string>();
   @Output() archived = new EventEmitter<void>();
   @Output() trashed = new EventEmitter<void>();
@@ -70,12 +71,12 @@ export class IconListComponent {
 
     const payload = {
       noteIdList: [this.noteID],
-      isArchived: true,
+      isArchived: !this.isArchivedView,
     };
 
     this.notesService.archiveNote(payload).subscribe({
       next: (res: any) => {
-        console.log('Archived', res);
+        console.log('Archive toggled', res);
         this.archived.emit();
       },
       error: (err) => {
