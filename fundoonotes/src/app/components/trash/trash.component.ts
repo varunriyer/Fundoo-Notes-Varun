@@ -21,9 +21,9 @@ export class TrashComponent implements OnInit {
   }
 
   loadTrashedNotes() {
-    this.notesService.getAllNotes().subscribe({
+    this.notesService.getTrashedNotes().subscribe({
       next: (res: any) => {
-        this.trashedNotes = res.data.data.filter((note: any) => note.isDeleted);
+        this.trashedNotes = res.data.data;
       },
       error: (err) => console.error('Failed to load trashed notes', err),
     });
