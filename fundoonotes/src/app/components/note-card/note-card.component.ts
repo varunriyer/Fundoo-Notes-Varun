@@ -12,6 +12,7 @@ import { IconListComponent } from '../icon-list/icon-list.component';
 })
 export class NoteCardComponent {
   @Input() notes: any[] = [];
+  @Input() isArchiveContext: boolean = false;
 
   hoveredIndex: number | null = null;
 

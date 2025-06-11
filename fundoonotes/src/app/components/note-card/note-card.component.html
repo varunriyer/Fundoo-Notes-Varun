@@ -16,6 +16,7 @@
     <app-icon-list
       context="card"
       [noteID]="note.id"
+      [isArchivedView]="isArchiveContext"
       (archived)="onNoteArchived(note.id)"
       (trashed)="onNoteTrashed(note.id)"
       (colorChanged)="onNoteColorChanged(note.id, $event)"
