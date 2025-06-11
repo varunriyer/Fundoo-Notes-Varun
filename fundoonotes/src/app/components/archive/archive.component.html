@@ -1,0 +1,18 @@
+<div *ngIf="archivedNotes.length === 0" class="archive-container">
+  <div class="archive-placeholder">
+    <mat-icon
+      fontSet="material-symbols-outlined"
+      fontIcon="archive"
+      class="archive-icon"
+      >archive</mat-icon
+    >
+    <p class="archive-text">Your archived notes appear here</p>
+  </div>
+</div>
+
+<ng-container *ngIf="archivedNotes.length > 0">
+  <app-note-card
+    [notes]="archivedNotes"
+    [isArchiveContext]="true"
+  ></app-note-card>
+</ng-container>

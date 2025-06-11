@@ -1,0 +1,55 @@
+.note-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 1px rgba(60, 64, 67, 0.2);
+  padding: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: box-shadow 0.2s ease;
+  min-height: 120px;
+  overflow: visible;
+}
+
+.note-card:hover {
+  box-shadow: 0 2px 8px rgba(60, 64, 67, 0.3);
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.note-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  word-break: break-word;
+}
+
+.note-description {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+  color: #333;
+  word-break: break-word;
+}
+
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.note-footer.visible {
+  opacity: 1;
+  pointer-events: auto;
+}

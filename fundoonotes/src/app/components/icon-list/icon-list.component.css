@@ -1,0 +1,65 @@
+.icon-list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #5f6368;
+  font-size: 20px;
+  padding-top: 4px;
+  position: relative;
+}
+
+.palette-container {
+  position: relative;
+}
+
+.color-palette {
+  position: absolute;
+  top: 28px;
+  left: -10px;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  width: 160px;
+  z-index: 1000;
+}
+
+.color-circle {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  margin: 4px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+
+mat-icon {
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+mat-icon:hover {
+  color: black;
+}
+
+.hover-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 8px;
+  transition: box-shadow 0.2s ease;
+}
+
+.hover-icon-wrapper:hover {
+  background-color: rgba(60, 64, 67, 0.08);
+  box-shadow: 0 1px 4px rgba(60, 64, 67, 0.3);
+}
+
+.inactive-icon {
+  color: rgba(60, 64, 67, 0.38);
+  cursor: default;
+}

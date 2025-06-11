@@ -1,0 +1,68 @@
+.note-input-collapsed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(60, 64, 67, 0.3);
+  cursor: text;
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem auto 0 auto;
+}
+
+.note-input-expanded {
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(60, 64, 67, 0.3);
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem auto 0 auto;
+  background-color: white;
+}
+
+.note-input-expanded input,
+.note-input-expanded textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1.2rem;
+  padding: 8px 0;
+  font-weight: 600;
+  background: transparent;
+}
+
+.note-input-expanded textarea {
+  height: 25px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  background: transparent;
+}
+.expanded-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.close-button {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #202124;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  gap: 34px;
+  align-items: center;
+  color: #5f6368;
+}

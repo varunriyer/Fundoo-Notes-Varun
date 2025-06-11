@@ -1,0 +1,56 @@
+<mat-toolbar class="toolbar" color="primary">
+  <div class="left-section">
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="assets/keep-logo.png" class="logo" alt="logo" />
+    <span class="app-name">{{ currentTitle }}</span>
+  </div>
+
+  <div class="search-container desktop-search">
+    <mat-icon>search</mat-icon>
+    <input matInput placeholder="   Search" />
+  </div>
+
+  <div class="right-section">
+    <button
+      mat-icon-button
+      class="mobile-search"
+      (click)="mobileSearchOpen = true"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="refreshPage()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="toggleView()">
+      <mat-icon>{{ isGrid ? "view_stream_outline" : "grid_view" }}</mat-icon>
+    </button>
+
+    <button mat-icon-button>
+      <mat-icon fontSet="material-symbols-outlined" fontIcon="settings"
+        >settings</mat-icon
+      >
+    </button>
+
+    <span class="right-gap"></span>
+
+    <button mat-icon-button>
+      <mat-icon fontSet="material-symbols-outlined" fontIcon="apps"
+        >apps</mat-icon
+      >
+    </button>
+
+    <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
+  </div>
+</mat-toolbar>
+
+<div class="mobile-search-bar" *ngIf="mobileSearchOpen">
+  <mat-icon>search</mat-icon>
+  <input matInput placeholder="Search" />
+  <button mat-icon-button (click)="mobileSearchOpen = false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

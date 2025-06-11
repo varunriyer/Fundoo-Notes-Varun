@@ -1,0 +1,20 @@
+<app-toolbar (menuClicked)="isSidenavOpen = !isSidenavOpen"></app-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    mode="side"
+    [opened]="true"
+    [class.mat-drawer-collapsed]="!sidenavOpened && !isHovered"
+    (mouseenter)="onMouseEnterSidenav()"
+    (mouseleave)="onMouseLeaveSidenav()"
+    class="custom-sidenav"
+  >
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="dashboard-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
