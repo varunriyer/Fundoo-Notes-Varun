@@ -1,9 +1,8 @@
-<!-- Trash subtitle: sits right under the search bar -->
-<p *ngIf="trashedNotes.length === 0" class="trash-subtitle-standalone">
+<br />
+<p class="trash-subtitle-standalone">
   Notes in Trash are deleted after 7 days.
 </p>
 
-<!-- Placeholder block below subtitle -->
 <div *ngIf="trashedNotes.length === 0" class="trash-container">
   <div class="trash-placeholder">
     <mat-icon
