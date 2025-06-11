@@ -21,7 +21,34 @@
   <mat-icon fontSet="material-symbols-outlined" (click)="handleArchive()">
     archive
   </mat-icon>
-  <mat-icon fontSet="material-symbols-outlined">more_vert</mat-icon>
+  <button mat-icon-button [matMenuTriggerFor]="moreMenu" class="menu-button">
+    <mat-icon fontSet="material-symbols-outlined">more_vert</mat-icon>
+  </button>
+
+  <mat-menu #moreMenu="matMenu" class="custom-menu">
+    <button mat-menu-item (click)="handleTrash()">
+      <span>Delete note</span>
+    </button>
+    <button mat-menu-item>
+      <span>Add label</span>
+    </button>
+    <button mat-menu-item>
+      <span>Add drawing</span>
+    </button>
+    <button mat-menu-item>
+      <span>Make a copy</span>
+    </button>
+    <button mat-menu-item>
+      <span>Show checkboxes</span>
+    </button>
+    <button mat-menu-item>
+      <span>Copy to Google Docs</span>
+    </button>
+    <button mat-menu-item>
+      <span>Version history</span>
+    </button>
+  </mat-menu>
+
   <mat-icon fontSet="material-symbols-outlined inactive-icon">undo</mat-icon>
   <mat-icon fontSet="material-symbols-outlined inactive-icon">redo</mat-icon>
 </div>

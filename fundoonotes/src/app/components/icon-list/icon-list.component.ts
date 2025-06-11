@@ -2,11 +2,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { NotesService } from 'src/app/services/notes/notes.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-icon-list',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatMenuModule],
   templateUrl: './icon-list.component.html',
   styleUrls: ['./icon-list.component.css'],
 })
@@ -15,6 +17,7 @@ export class IconListComponent {
   @Input() noteID: string = '';
   @Output() colorSelected = new EventEmitter<string>();
   @Output() archived = new EventEmitter<void>();
+  @Output() trashed = new EventEmitter<void>();
 
   showColorPalette = false;
 
@@ -59,6 +62,25 @@ export class IconListComponent {
       },
       error: (err) => {
         console.error('Archive failed:', err);
+      },
+    });
+  }
+
+  handleTrash() {
+    if (!this.noteID) return;
+
+    const payload = {
+      noteIdList: [this.noteID],
+      isDeleted: true,
+    };
+
+    this.notesService.trashNote(payload).subscribe({
+      next: (res: any) => {
+        console.log('Trashed', res);
+        this.trashed.emit();
+      },
+      error: (err) => {
+        console.error('Trash failed:', err);
       },
     });
   }

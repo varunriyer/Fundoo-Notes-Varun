@@ -45,7 +45,6 @@ mat-icon:hover {
   color: black;
 }
 
-/* NEW: Add wrapper around each icon for shadow effect */
 .hover-icon-wrapper {
   display: flex;
   align-items: center;
