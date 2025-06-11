@@ -21,4 +21,9 @@ export class NotesService {
     const headers = this.http.getHeader();
     return this.http.postApi('notes/archiveNotes', payload, headers);
   }
+
+  getArchivedNotes() {
+    const headers = this.http.getHeader();
+    return this.http.getApi('notes/getArchiveNotesList', headers);
+  }
 }
