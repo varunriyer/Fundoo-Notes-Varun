@@ -13,6 +13,7 @@ import { IconListComponent } from '../icon-list/icon-list.component';
 export class NoteCardComponent {
   @Input() notes: any[] = [];
   @Input() isArchiveContext: boolean = false;
+  @Input() isTrashContext: boolean = false;
 
   hoveredIndex: number | null = null;
 
@@ -28,5 +29,13 @@ export class NoteCardComponent {
     this.notes = this.notes.map((note) =>
       note.id === noteId ? { ...note, color: newColor } : note
     );
+  }
+
+  onNoteRestored(id: string) {
+    this.notes = this.notes.filter((note) => note.id !== id);
+  }
+
+  onNoteDeletedForever(id: string) {
+    this.notes = this.notes.filter((note) => note.id !== id);
   }
 }

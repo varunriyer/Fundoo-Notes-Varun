@@ -14,12 +14,14 @@
 
   <div class="note-footer" [class.visible]="hoveredIndex === i">
     <app-icon-list
-      context="card"
+      [context]="isTrashContext ? 'trash' : 'card'"
       [noteID]="note.id"
       [isArchivedView]="isArchiveContext"
       (archived)="onNoteArchived(note.id)"
       (trashed)="onNoteTrashed(note.id)"
       (colorChanged)="onNoteColorChanged(note.id, $event)"
+      (deletedForever)="onNoteDeletedForever(note.id)"
+      (restored)="onNoteRestored(note.id)"
     ></app-icon-list>
   </div>
 </div>
