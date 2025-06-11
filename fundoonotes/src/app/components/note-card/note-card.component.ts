@@ -18,4 +18,8 @@ export class NoteCardComponent {
   onNoteArchived(archivedId: string) {
     this.notes = this.notes.filter((note) => note.id !== archivedId);
   }
+
+  onNoteTrashed(trashedId: string) {
+    this.notes = this.notes.filter((note) => note.id !== trashedId);
+  }
 }

@@ -12,11 +12,12 @@
 
   <p class="note-description">{{ note.description }}</p>
 
-  <div class="note-footer" *ngIf="hoveredIndex === i">
+  <div class="note-footer" [class.visible]="hoveredIndex === i">
     <app-icon-list
       context="card"
       [noteID]="note.id"
       (archived)="onNoteArchived(note.id)"
+      (trashed)="onNoteTrashed(note.id)"
     ></app-icon-list>
   </div>
 </div>

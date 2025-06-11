@@ -44,4 +44,12 @@
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.note-footer.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
