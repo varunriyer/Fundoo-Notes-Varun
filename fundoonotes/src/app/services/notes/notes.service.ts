@@ -36,4 +36,9 @@ export class NotesService {
     const headers = this.http.getHeader();
     return this.http.getApi('notes/getTrashNotesList', headers);
   }
+
+  changeNoteColor(payload: { color: string; noteIdList: string[] }) {
+    const headers = this.http.getHeader();
+    return this.http.postApi('notes/changesColorNotes', payload, headers);
+  }
 }
