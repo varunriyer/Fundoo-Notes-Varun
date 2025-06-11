@@ -23,9 +23,9 @@ export class NotesComponent implements OnInit {
   loadNotes() {
     this.notesService.getAllNotes().subscribe({
       next: (res: any) => {
-        this.allNotes = res.data.data.filter(
-          (note: any) => !note.isArchived && !note.isDeleted
-        );
+        this.allNotes = res.data.data
+          .filter((note: any) => !note.isArchived && !note.isDeleted)
+          .reverse();
       },
       error: (err) => console.error('Failed to load notes', err),
     });
