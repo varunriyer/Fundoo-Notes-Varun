@@ -1,24 +1,62 @@
+/* === CONTAINER LAYOUT === */
+/* ✅ New Grid Layout Matching Friend’s Setup */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.grid-container .note-card {
+  flex: 0 0 calc(25% - 12px); /* 4 per row with gap */
+  max-width: 280px;
+  box-sizing: border-box;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+/* === NOTE CARD SHARED STYLES === */
 .note-card {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 1px 1px rgba(60, 64, 67, 0.2);
-  padding: 16px 16px 4px 16px; /* top, right, bottom, left */
-  width: 100%;
-  max-width: 600px;
-  margin: 1.5rem auto;
+  padding: 16px 16px 4px 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   transition: box-shadow 0.2s ease;
-  min-height: 120px;
-  overflow: visible;
+  min-height: 100px;
   justify-content: space-between;
+  overflow: visible;
 }
 
+/* Hover effect */
 .note-card:hover {
   box-shadow: 0 2px 8px rgba(60, 64, 67, 0.3);
 }
 
+/* Grid mode specific */
+.note-card.grid {
+  width: 100%; /* grid-template-columns controls width */
+  margin: 0;
+}
+
+/* List mode specific */
+.note-card.list {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Header, Title, Description */
 .note-header {
   display: flex;
   justify-content: space-between;
@@ -40,6 +78,7 @@
   word-break: break-word;
 }
 
+/* Footer visibility on hover */
 .note-footer {
   display: flex;
   align-items: center;
@@ -48,6 +87,8 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .note-footer.visible {

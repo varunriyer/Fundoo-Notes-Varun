@@ -14,6 +14,7 @@ export class NoteCardComponent {
   @Input() notes: any[] = [];
   @Input() isArchiveContext: boolean = false;
   @Input() isTrashContext: boolean = false;
+  @Input() viewMode: string = 'grid';
 
   hoveredIndex: number | null = null;
 
