@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NoteInputComponent } from '../note-input/note-input.component';
 import { NoteCardComponent } from '../note-card/note-card.component';
 import { NotesService } from 'src/app/services/notes/notes.service';
+import { ViewModeService } from 'src/app/services/view-mode/view-mode.service';
 
 @Component({
   selector: 'app-notes',
@@ -13,11 +14,19 @@ import { NotesService } from 'src/app/services/notes/notes.service';
 })
 export class NotesComponent implements OnInit {
   allNotes: any[] = [];
+  viewMode: 'grid' | 'list' = 'list';
 
-  constructor(private notesService: NotesService) {}
+  constructor(
+    private notesService: NotesService,
+    private viewModeService: ViewModeService
+  ) {}
 
   ngOnInit(): void {
     this.loadNotes();
+
+    this.viewModeService.view$.subscribe((mode) => {
+      this.viewMode = mode;
+    });
   }
 
   loadNotes() {
