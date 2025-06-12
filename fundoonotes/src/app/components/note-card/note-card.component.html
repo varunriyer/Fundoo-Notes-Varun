@@ -7,11 +7,13 @@
     (mouseenter)="hoveredIndex = i"
     (mouseleave)="hoveredIndex = null"
   >
-    <div class="note-header">
+    <div class="note-header" (click)="openEditDialog(note)">
       <h3 class="note-title">{{ note.title }}</h3>
     </div>
 
-    <p class="note-description">{{ note.description }}</p>
+    <p class="note-description" (click)="openEditDialog(note)">
+      {{ note.description }}
+    </p>
 
     <div class="note-footer" [class.visible]="hoveredIndex === i">
       <app-icon-list
