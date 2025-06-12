@@ -1,0 +1,23 @@
+<div
+  class="edit-dialog"
+  [ngStyle]="{ 'background-color': data.color || '#fff' }"
+>
+  <input
+    type="text"
+    placeholder="Title"
+    formControlName="title"
+    class="edit-title"
+  />
+  <textarea
+    rows="3"
+    placeholder="Take a note..."
+    formControlName="description"
+    class="edit-desc"
+  ></textarea>
+
+  <div class="dialog-footer">
+    <span class="edit-time">Edited {{ data.editedTime || "now" }}</span>
+    <button mat-button (click)="close()">Close</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.edit-dialog {
+  padding: 16px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.edit-title,
+.edit-desc {
+  width: 100%;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  resize: none;
+  margin-bottom: 12px;
+  background: transparent;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
