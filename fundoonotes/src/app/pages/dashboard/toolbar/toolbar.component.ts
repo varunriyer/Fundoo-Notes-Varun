@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { ViewModeService } from 'src/app/services/view-mode/view-mode.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -21,7 +22,10 @@ export class ToolbarComponent implements OnInit {
 
   currentTitle: string = 'Keep';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private viewModeService: ViewModeService
+  ) {}
 
   ngOnInit(): void {
     this.router.events
@@ -49,6 +53,8 @@ export class ToolbarComponent implements OnInit {
 
   toggleView() {
     this.isGrid = !this.isGrid;
+    const mode: 'grid' | 'list' = this.isGrid ? 'grid' : 'list';
+    this.viewModeService.setView(mode);
   }
 
   refreshPage() {
