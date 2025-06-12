@@ -16,5 +16,9 @@
 </div>
 
 <ng-container *ngIf="trashedNotes.length > 0">
-  <app-note-card [notes]="trashedNotes" [isTrashContext]="true"></app-note-card>
+  <app-note-card
+    [notes]="trashedNotes"
+    [isTrashContext]="true"
+    [viewMode]="viewMode"
+  ></app-note-card>
 </ng-container>
