@@ -58,7 +58,10 @@ export class ToolbarComponent implements OnInit {
   }
 
   refreshPage() {
-    location.reload();
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl(currentUrl);
+    });
   }
 
   toggleSidebar() {
