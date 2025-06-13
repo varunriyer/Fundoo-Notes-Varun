@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { ViewModeService } from 'src/app/services/view-mode/view-mode.service';
+import { SearchService } from 'src/app/services/search/search.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -19,12 +20,14 @@ export class ToolbarComponent implements OnInit {
   mobileSearchOpen = false;
 
   @Output() menuClicked = new EventEmitter<void>();
+  @Output() searchChanged = new EventEmitter<string>();
 
   currentTitle: string = 'Keep';
 
   constructor(
     private router: Router,
-    private viewModeService: ViewModeService
+    private viewModeService: ViewModeService,
+    private searchService: SearchService
   ) {}
 
   ngOnInit(): void {
@@ -66,5 +69,10 @@ export class ToolbarComponent implements OnInit {
 
   toggleSidebar() {
     this.menuClicked.emit();
+  }
+
+  onSearchChange(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.searchService.updateSearchTerm(value);
   }
 }

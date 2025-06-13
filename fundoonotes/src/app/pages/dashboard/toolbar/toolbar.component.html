@@ -9,7 +9,7 @@
 
   <div class="search-container desktop-search">
     <mat-icon>search</mat-icon>
-    <input matInput placeholder="   Search" />
+    <input matInput placeholder="   Search" (input)="onSearchChange($event)" />
   </div>
 
   <div class="right-section">
