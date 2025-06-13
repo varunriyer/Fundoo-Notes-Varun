@@ -1,6 +1,17 @@
-<app-note-input (noteAdded)="loadNotes()"></app-note-input>
-<app-note-card
-  [notes]="allNotes"
-  [viewMode]="viewMode"
-  (noteUpdated)="loadNotes()"
-></app-note-card>
+<!-- Hide note input during search -->
+<app-note-input
+  *ngIf="filteredNotes.length === allNotes.length"
+  (noteAdded)="loadNotes()"
+></app-note-input>
+
+<ng-container *ngIf="filteredNotes.length > 0; else noResults">
+  <app-note-card
+    [notes]="filteredNotes"
+    [viewMode]="viewMode"
+    (noteUpdated)="loadNotes()"
+  ></app-note-card>
+</ng-container>
+
+<ng-template #noResults>
+  <div class="no-results">No matching results.</div>
+</ng-template>

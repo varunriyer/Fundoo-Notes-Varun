@@ -4,6 +4,7 @@ import { NoteInputComponent } from '../note-input/note-input.component';
 import { NoteCardComponent } from '../note-card/note-card.component';
 import { NotesService } from 'src/app/services/notes/notes.service';
 import { ViewModeService } from 'src/app/services/view-mode/view-mode.service';
+import { SearchService } from 'src/app/services/search/search.service';
 
 @Component({
   selector: 'app-notes',
@@ -15,10 +16,12 @@ import { ViewModeService } from 'src/app/services/view-mode/view-mode.service';
 export class NotesComponent implements OnInit {
   allNotes: any[] = [];
   viewMode: 'grid' | 'list' = 'list';
+  filteredNotes: any[] = [];
 
   constructor(
     private notesService: NotesService,
-    private viewModeService: ViewModeService
+    private viewModeService: ViewModeService,
+    private searchService: SearchService
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +29,10 @@ export class NotesComponent implements OnInit {
 
     this.viewModeService.view$.subscribe((mode) => {
       this.viewMode = mode;
+    });
+
+    this.searchService.searchTerm$.subscribe((term) => {
+      this.filterNotes(term);
     });
   }
 
@@ -35,8 +42,16 @@ export class NotesComponent implements OnInit {
         this.allNotes = res.data.data
           .filter((note: any) => !note.isArchived && !note.isDeleted)
           .reverse();
+        this.filteredNotes = [...this.allNotes];
       },
       error: (err) => console.error('Failed to load notes', err),
     });
+  }
+
+  filterNotes(term: string) {
+    const lowerTerm = term.toLowerCase();
+    this.filteredNotes = this.allNotes.filter((note) =>
+      (note.title + ' ' + note.description).toLowerCase().includes(lowerTerm)
+    );
   }
 }
