@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { IconListComponent } from '../icon-list/icon-list.component';
@@ -17,6 +17,7 @@ export class NoteCardComponent {
   @Input() isArchiveContext: boolean = false;
   @Input() isTrashContext: boolean = false;
   @Input() viewMode: string = 'grid';
+  @Output() noteUpdated = new EventEmitter<void>();
 
   hoveredIndex: number | null = null;
 
@@ -44,17 +45,32 @@ export class NoteCardComponent {
     this.notes = this.notes.filter((note) => note.id !== id);
   }
 
-  openEditDialog(note: any) {
+  openEditDialog(note: any): void {
     const dialogRef = this.dialog.open(EditNoteComponent, {
       width: '600px',
-      data: { ...note },
+      data: {
+        id: note.id,
+        title: note.title,
+        description: note.description,
+        color: note.color,
+      },
+      panelClass: 'custom-dialog-container',
+      autoFocus: false,
+      disableClose: true, // disable closing by default backdrop click
     });
 
-    dialogRef.afterClosed().subscribe((updatedNote) => {
-      if (updatedNote) {
-        this.notes = this.notes.map((n) =>
-          n.id === updatedNote.id ? { ...n, ...updatedNote } : n
-        );
+    // Manually handle outside click
+    dialogRef.backdropClick().subscribe(() => {
+      const componentInstance = dialogRef.componentInstance;
+      if (componentInstance) {
+        componentInstance.save(); // trigger save before closing
+      }
+    });
+
+    // Refresh notes if update was successful
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'updated') {
+        this.noteUpdated.emit();
       }
     });
   }
