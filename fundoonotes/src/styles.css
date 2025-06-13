@@ -12,3 +12,17 @@ body {
 mat-sidenav-content {
   background-color: white !important;
 }
+
+::ng-deep .mat-dialog-container {
+  overflow: visible !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  /** Add this line: */
+  display: contents !important; /* Allows dropdowns to render outside bounds */
+}
+
+.custom-dialog-container {
+  overflow: visible !important;
+  position: relative !important;
+}
