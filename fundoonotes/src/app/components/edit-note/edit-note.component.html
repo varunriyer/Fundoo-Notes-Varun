@@ -1,23 +1,30 @@
 <div
   class="edit-dialog"
-  [ngStyle]="{ 'background-color': data.color || '#fff' }"
+  [ngStyle]="{ 'background-color': selectedColor || '#ffffff' }"
 >
-  <input
-    type="text"
-    placeholder="Title"
-    formControlName="title"
-    class="edit-title"
-  />
-  <textarea
-    rows="3"
-    placeholder="Take a note..."
-    formControlName="description"
-    class="edit-desc"
-  ></textarea>
+  <form [formGroup]="noteForm">
+    <input
+      type="text"
+      formControlName="title"
+      class="title-input"
+      placeholder="Title"
+    />
 
-  <div class="dialog-footer">
-    <span class="edit-time">Edited {{ data.editedTime || "now" }}</span>
-    <button mat-button (click)="close()">Close</button>
-    <button mat-raised-button color="primary" (click)="save()">Save</button>
-  </div>
+    <textarea
+      formControlName="description"
+      class="description-input"
+      placeholder="Take a note..."
+    ></textarea>
+
+    <div class="expanded-icons">
+      <app-icon-list
+        context="input"
+        (colorSelected)="onColorChange($event)"
+      ></app-icon-list>
+
+      <span class="spacer"></span>
+
+      <button type="button" class="close-button" (click)="save()">Close</button>
+    </div>
+  </form>
 </div>
