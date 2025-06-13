@@ -1,4 +1,8 @@
-<app-toolbar (menuClicked)="isSidenavOpen = !isSidenavOpen"></app-toolbar>
+<app-toolbar
+  (menuClicked)="isSidenavOpen = !isSidenavOpen"
+  (searchChanged)="onSearchChanged($event)"
+>
+</app-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
@@ -14,6 +18,7 @@
 
   <mat-sidenav-content>
     <div class="dashboard-content">
+      <!-- Pass searchTerm to routed components -->
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

@@ -27,6 +27,7 @@ export class DashboardComponent {
   isSidenavOpen = false;
   isHovered = false;
   allNotes: any[] = [];
+  searchTerm: string = '';
 
   constructor(private notesService: NotesService) {}
 
@@ -40,5 +41,9 @@ export class DashboardComponent {
 
   onMouseLeaveSidenav() {
     this.isHovered = false;
+  }
+
+  onSearchChanged(term: string) {
+    this.searchTerm = term;
   }
 }
