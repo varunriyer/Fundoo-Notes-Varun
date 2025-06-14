@@ -16,8 +16,6 @@ import { RouterModule } from '@angular/router';
     ToolbarComponent,
     SidenavComponent,
     MatSidenavModule,
-    NoteInputComponent,
-    NoteCardComponent,
     RouterModule,
   ],
   templateUrl: './dashboard.component.html',
