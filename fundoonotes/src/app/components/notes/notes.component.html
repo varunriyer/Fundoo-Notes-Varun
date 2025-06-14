@@ -1,38 +1,42 @@
-<!-- Note Input visible only when NOT searching -->
-<app-note-input *ngIf="!isSearching" (noteAdded)="loadNotes()"></app-note-input>
+<br />
 
-<!-- ✅ When Searching -->
-<ng-container *ngIf="isSearching">
-  <ng-container *ngIf="filteredNotes.length > 0; else noResults">
-    <app-note-card
-      [notes]="filteredNotes"
-      [viewMode]="viewMode"
-      (noteUpdated)="loadNotes()"
-    ></app-note-card>
-  </ng-container>
-</ng-container>
+<div [ngClass]="viewMode">
+  <app-note-input
+    *ngIf="!isSearching"
+    (noteAdded)="loadNotes()"
+  ></app-note-input>
 
-<!-- ✅ When NOT Searching -->
-<ng-container *ngIf="!isSearching">
-  <ng-container *ngIf="pinnedNotes.length > 0">
-    <div class="section-title">PINNED</div>
-    <app-note-card
-      [notes]="pinnedNotes"
-      [viewMode]="viewMode"
-      (noteUpdated)="loadNotes()"
-    ></app-note-card>
+  <ng-container *ngIf="isSearching">
+    <ng-container *ngIf="filteredNotes.length > 0; else noResults">
+      <app-note-card
+        [notes]="filteredNotes"
+        [viewMode]="viewMode"
+        (noteUpdated)="loadNotes()"
+      ></app-note-card>
+    </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="unpinnedNotes.length > 0">
-    <div class="section-title">OTHERS</div>
-    <app-note-card
-      [notes]="unpinnedNotes"
-      [viewMode]="viewMode"
-      (noteUpdated)="loadNotes()"
-    ></app-note-card>
-  </ng-container>
-</ng-container>
+  <ng-container *ngIf="!isSearching">
+    <ng-container *ngIf="pinnedNotes.length > 0">
+      <div class="section-title">PINNED</div>
+      <app-note-card
+        [notes]="pinnedNotes"
+        [viewMode]="viewMode"
+        (noteUpdated)="loadNotes()"
+      ></app-note-card>
+    </ng-container>
 
-<ng-template #noResults>
-  <div class="no-results">No matching results.</div>
-</ng-template>
+    <ng-container *ngIf="unpinnedNotes.length > 0">
+      <div class="section-title">OTHERS</div>
+      <app-note-card
+        [notes]="unpinnedNotes"
+        [viewMode]="viewMode"
+        (noteUpdated)="loadNotes()"
+      ></app-note-card>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #noResults>
+    <div class="no-results">No matching results.</div>
+  </ng-template>
+</div>
