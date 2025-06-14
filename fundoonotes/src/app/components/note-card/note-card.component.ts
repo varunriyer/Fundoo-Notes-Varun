@@ -75,6 +75,10 @@ export class NoteCardComponent {
       }
     });
   }
+  onReminderSet() {
+    console.log('Reminder successfully set.');
+    // optionally trigger a reload or show UI feedback
+  }
 
   togglePin(note: any) {
     const updatedPinStatus = !note.isPined;

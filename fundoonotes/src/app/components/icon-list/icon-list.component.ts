@@ -22,6 +22,7 @@ export class IconListComponent {
   @Output() colorChanged = new EventEmitter<string>();
   @Output() restored = new EventEmitter<void>();
   @Output() deletedForever = new EventEmitter<void>();
+  @Output() reminderSet = new EventEmitter<void>();
 
   showColorPalette = false;
 
@@ -136,6 +137,26 @@ export class IconListComponent {
         this.deletedForever.emit();
       },
       error: (err) => console.error('Delete forever failed', err),
+    });
+  }
+
+  handleReminder() {
+    if (!this.noteID) return;
+
+    const reminderTime = new Date();
+    reminderTime.setMinutes(reminderTime.getMinutes() + 1); //Default 1 min reminder
+
+    const payload = {
+      noteIdList: [this.noteID],
+      reminder: [reminderTime.toISOString()],
+    };
+
+    this.notesService.addReminder(payload).subscribe({
+      next: () => {
+        console.log('Reminder set');
+        this.reminderSet.emit();
+      },
+      error: (err) => console.error('Reminder failed', err),
     });
   }
 }

@@ -1,11 +1,26 @@
-<div class="reminders-container">
-  <div class="reminders-placeholder">
-    <mat-icon
-      fontSet="material-symbols-outlined"
-      fontIcon="notifications"
-      class="bell-icon"
-      >notifications</mat-icon
-    >
-    <p class="empty-reminder-text">Notes with upcoming reminders appear here</p>
+<ng-container *ngIf="reminderNotes.length > 0; else emptyState">
+  <app-note-card
+    [notes]="reminderNotes"
+    [viewMode]="'grid'"
+    [isTrashContext]="false"
+    [isArchiveContext]="false"
+    (noteUpdated)="ngOnInit()"
+  ></app-note-card>
+</ng-container>
+
+<ng-template #emptyState>
+  <div class="reminders-container">
+    <div class="reminders-placeholder">
+      <mat-icon
+        fontSet="material-symbols-outlined"
+        fontIcon="notifications"
+        class="bell-icon"
+      >
+        notifications
+      </mat-icon>
+      <p class="empty-reminder-text">
+        Notes with upcoming reminders appear here
+      </p>
+    </div>
   </div>
-</div>
+</ng-template>
