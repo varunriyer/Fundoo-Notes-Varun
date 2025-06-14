@@ -1,0 +1,13 @@
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #5f6368;
+  padding: 12px 0 4px 8px;
+  text-transform: uppercase;
+}
+
+.no-results {
+  text-align: center;
+  color: #888;
+  margin-top: 2rem;
+}

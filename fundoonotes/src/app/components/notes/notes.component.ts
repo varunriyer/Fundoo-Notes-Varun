@@ -15,8 +15,12 @@ import { SearchService } from 'src/app/services/search/search.service';
 })
 export class NotesComponent implements OnInit {
   allNotes: any[] = [];
-  viewMode: 'grid' | 'list' = 'list';
+  pinnedNotes: any[] = [];
+  unpinnedNotes: any[] = [];
   filteredNotes: any[] = [];
+
+  viewMode: 'grid' | 'list' = 'list';
+  isSearching = false;
 
   constructor(
     private notesService: NotesService,
@@ -32,7 +36,8 @@ export class NotesComponent implements OnInit {
     });
 
     this.searchService.searchTerm$.subscribe((term) => {
-      this.filterNotes(term);
+      this.isSearching = term.trim().length > 0;
+      this.applySearch(term);
     });
   }
 
@@ -41,14 +46,18 @@ export class NotesComponent implements OnInit {
       next: (res: any) => {
         this.allNotes = res.data.data
           .filter((note: any) => !note.isArchived && !note.isDeleted)
-          .reverse();
-        this.filteredNotes = [...this.allNotes];
+          .reverse(); // Newest on top
+
+        this.pinnedNotes = this.allNotes.filter((n) => n.isPined);
+        this.unpinnedNotes = this.allNotes.filter((n) => !n.isPined);
+
+        this.filteredNotes = [...this.allNotes]; // fallback when not searching
       },
       error: (err) => console.error('Failed to load notes', err),
     });
   }
 
-  filterNotes(term: string) {
+  applySearch(term: string) {
     const lowerTerm = term.toLowerCase();
     this.filteredNotes = this.allNotes.filter((note) =>
       (note.title + ' ' + note.description).toLowerCase().includes(lowerTerm)
