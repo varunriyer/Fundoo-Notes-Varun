@@ -56,4 +56,9 @@ export class NotesService {
     const headers = this.http.getHeader();
     return this.http.postApi('notes/updateNotes', payload, headers);
   }
+
+  pinUnpinNote(payload: { noteIdList: string[]; isPined: boolean }) {
+    const headers = this.http.getHeader();
+    return this.http.postApi('notes/pinUnpinNotes', payload, headers);
+  }
 }
