@@ -7,6 +7,14 @@
     (mouseenter)="hoveredIndex = i"
     (mouseleave)="hoveredIndex = null"
   >
+    <mat-icon
+      *ngIf="!isTrashContext && hoveredIndex === i"
+      class="pin-icon"
+      fontSet="material-symbols-outlined"
+      (click)="togglePin(note); $event.stopPropagation()"
+    >
+      {{ note.isPined ? "push_pin" : "push_pin" }}
+    </mat-icon>
     <div class="note-header" (click)="openEditDialog(note)">
       <h3 class="note-title">{{ note.title }}</h3>
     </div>

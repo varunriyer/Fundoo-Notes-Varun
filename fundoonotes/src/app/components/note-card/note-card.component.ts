@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { IconListComponent } from '../icon-list/icon-list.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditNoteComponent } from '../edit-note/edit-note.component';
+import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-note-card',
@@ -21,7 +22,7 @@ export class NoteCardComponent {
 
   hoveredIndex: number | null = null;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private notesService: NotesService) {}
 
   onNoteArchived(archivedId: string) {
     this.notes = this.notes.filter((note) => note.id !== archivedId);
@@ -73,5 +74,22 @@ export class NoteCardComponent {
         this.noteUpdated.emit();
       }
     });
+  }
+
+  togglePin(note: any) {
+    const updatedPinStatus = !note.isPined;
+
+    this.notesService
+      .pinUnpinNote({
+        noteIdList: [note.id],
+        isPined: updatedPinStatus,
+      })
+      .subscribe({
+        next: () => {
+          note.isPined = updatedPinStatus; // update UI
+          this.noteUpdated.emit(); // emit to parent to reload notes if needed
+        },
+        error: (err) => console.error('Pin/unpin failed', err),
+      });
   }
 }
