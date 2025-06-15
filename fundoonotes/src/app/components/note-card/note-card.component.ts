@@ -57,18 +57,16 @@ export class NoteCardComponent {
       },
       panelClass: 'custom-dialog-container',
       autoFocus: false,
-      disableClose: true, // disable closing by default backdrop click
+      disableClose: true,
     });
 
-    // Manually handle outside click
     dialogRef.backdropClick().subscribe(() => {
       const componentInstance = dialogRef.componentInstance;
       if (componentInstance) {
-        componentInstance.save(); // trigger save before closing
+        componentInstance.save();
       }
     });
 
-    // Refresh notes if update was successful
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'updated') {
         this.noteUpdated.emit();
@@ -77,7 +75,6 @@ export class NoteCardComponent {
   }
   onReminderSet() {
     console.log('Reminder successfully set.');
-    // optionally trigger a reload or show UI feedback
   }
 
   togglePin(note: any) {
@@ -90,8 +87,8 @@ export class NoteCardComponent {
       })
       .subscribe({
         next: () => {
-          note.isPined = updatedPinStatus; // update UI
-          this.noteUpdated.emit(); // emit to parent to reload notes if needed
+          note.isPined = updatedPinStatus;
+          this.noteUpdated.emit();
         },
         error: (err) => console.error('Pin/unpin failed', err),
       });

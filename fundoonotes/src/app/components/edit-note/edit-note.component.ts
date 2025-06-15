@@ -28,12 +28,7 @@ export class EditNoteComponent implements OnInit {
     public dialogRef: MatDialogRef<EditNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private notesService: NotesService
-  ) {
-    // this.noteForm = this.fb.group({
-    //   title: [data.title],
-    //   description: [data.description],
-    // });
-  }
+  ) {}
   noteForm!: FormGroup;
   selectedColor = '';
 
@@ -63,7 +58,7 @@ export class EditNoteComponent implements OnInit {
 
     this.notesService.updateNote(updatedNote).subscribe({
       next: (res) => {
-        this.dialogRef.close('updated'); // you can pass back a flag or updated note if needed
+        this.dialogRef.close('updated');
       },
       error: (err) => {
         console.error('Update failed:', err);

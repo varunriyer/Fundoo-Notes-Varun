@@ -46,12 +46,12 @@ export class NotesComponent implements OnInit {
       next: (res: any) => {
         this.allNotes = res.data.data
           .filter((note: any) => !note.isArchived && !note.isDeleted)
-          .reverse(); // Newest on top
+          .reverse();
 
         this.pinnedNotes = this.allNotes.filter((n) => n.isPined);
         this.unpinnedNotes = this.allNotes.filter((n) => !n.isPined);
 
-        this.filteredNotes = [...this.allNotes]; // fallback when not searching
+        this.filteredNotes = [...this.allNotes];
       },
       error: (err) => console.error('Failed to load notes', err),
     });

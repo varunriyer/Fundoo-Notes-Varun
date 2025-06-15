@@ -1,4 +1,3 @@
-/* ✅ Remove dialog container white background */
 ::ng-deep .mat-dialog-container {
   padding: 0 !important;
   background-color: transparent !important;
@@ -7,7 +6,6 @@
   overflow: visible !important;
 }
 
-/* ✅ Wrap to center the dialog inside */
 .edit-wrapper {
   display: flex;
   justify-content: center;
@@ -18,7 +16,6 @@
   box-sizing: border-box;
 }
 
-/* ✅ Actual dialog box */
 .edit-dialog {
   padding: 16px;
   border-radius: 8px;
@@ -31,14 +28,12 @@
   position: relative;
 }
 
-/* Ensure the form fills the dialog and has spacing */
 form {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-/* Shared input styling */
 .title-input,
 .description-input {
   width: 100%;

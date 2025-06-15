@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 180px); /* 64 (toolbar) + ~40 (subtitle) + spacing */
+  height: calc(100vh - 180px);
   padding-top: 24px;
   box-sizing: border-box;
 }
